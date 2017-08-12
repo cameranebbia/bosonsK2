@@ -44,31 +44,40 @@ public:
 
 	ofImage partNone;
 
-	float partNoneRotVel;
-	float partNoneRotAmount;
-
-	bool showMask;
+	ofParameter<float> partNoneRotVel;
+	ofParameter<float> partNoneRotAmount;
 
 
 
-	bool showInfo;
+
 
 	////////// SOUNDS \\\\\\\\\
 		    
 	ofSoundPlayer  background;
 	ofSoundPlayer  sound;
 
-	int kinectMovementSpeed;
-	int prevMovSpd;
+	ofParameter<float> volFade;
 
-	float volume = 0;
-	float volScale = 0.0001;
-	float volFade = 0.04;
-	float volFadeOut = 0.04;
+	ofParameter<int> soundMoveScaleDown;
+	ofParameter<float> soundMoveSpeed;
+
+
+	ofParameter<float> threshMoveAudioMin;
+	ofParameter<float> threshMoveAudioMax;
+
+
+	ofParameter<float> soundVol;
+	ofParameter<float> soundVolMove;
+
+	ofParameter<float> backgroundVol;
+
+	ofParameter<int> kinectDiffSkip;
+	int kinectDiffCount;
 
 	//////////////\\\\\\\\\\\\\
-
-	bool mirrorH, mirrorV;
+		
+	ofParameter<bool> mirrorX;
+	ofParameter<bool> mirrorY;
 
 
 	ofxCvColorImage colorImg;
@@ -100,7 +109,13 @@ public:
 	ofParameter<int> dilate;
 
 
+	ofParameter<int> cropLeft, cropRight;
+	ofParameter<bool> showCrop;
+	
 
+
+	int screenshotCount;
+	ofImage screenshot;
 
 	//////---------------------------------------------------------------------------
 
@@ -150,10 +165,15 @@ public:
 
 	// GUI
 	ofxPanel			gui;
+
+	ofxPanel			guiEffect;
+
 	void				setupGui();
 	void				keyPressed(int key);
 	void				drawGui();
 	ofParameter<bool>	toggleGuiDraw;
+	ofParameter<bool>	toggleGuiEffectDraw;
+
 	ofParameter<float>	guiFPS;
 	ofParameter<float>	guiMinFPS;
 	deque<float>		deltaTimeDeque;
